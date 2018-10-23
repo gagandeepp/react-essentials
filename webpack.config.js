@@ -1,26 +1,37 @@
+var path = require('path');
 
 module.exports = {
-    entry: "./src/index.js",
-    output: {
-        path: "./dist/assets",
-        filename: "bundle.js",
-        publicPath: "assets"
-    },
+    mode: 'development',
     devServer: {
-        inline: true,
-        contentBase: './dist',
-        port: 7777
-    },
+        contentBase: path.join(__dirname, 'public'),
+        compress: true,
+        port: 9000
+      },
     module: {
-        loaders: [
+      rules: [
         {
-            test: /\.js$/,
-            exclude: /{node_modules}/,
-            loader: ["babel-loader"],
-            query: {
-                presets: ["latest", "stage-0", "react"]
-            }
+          test: /\.js$/,
+          exclude: /node_modules/,
+          use: {
+            loader: "babel-loader"
+          }
+        },
+        {
+            test: /\.html$/,
+            use: [
+              {
+                loader: "html-loader"
+              }
+            ]
+        },
+        {
+            test: /\.css$/,
+            use: [ 'style-loader', 'css-loader' ]
+        },
+        {
+            test: /\.svg$/,
+            loader: 'svg-inline-loader'
         }
-    ]
+      ]
     }
-};
+  };
