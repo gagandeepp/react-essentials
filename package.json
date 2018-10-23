@@ -9,7 +9,7 @@
     "react-scripts": "2.0.5"
   },
   "scripts": {
-    "start": "./node_modules/.bin/webpack-dev-server",
+    "start": "./node_modules/.bin/webpack-dev-server --open",
     "build": "webpack",
     "test": "react-scripts test",
     "watch": "webpack --watch"
