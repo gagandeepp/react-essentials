@@ -1,7 +1,7 @@
 const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-
+const webpack = require('webpack');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     mode: 'development',
@@ -14,7 +14,8 @@ module.exports = {
     devServer: {
         contentBase: path.join(__dirname, 'dist'),
         compress: true,
-        port: 9000
+        port: 9000,
+        hot: true
     },
     module: {
         rules: [{
@@ -56,8 +57,9 @@ module.exports = {
     },
     plugins: [
              new CleanWebpackPlugin(['dist']),
-             new HtmlWebpackPlugin({
-                title: 'Output Management'
-              })
+             new webpack.HotModuleReplacementPlugin(),
+             new CopyWebpackPlugin([
+                {from:'./public',to:'./'} 
+            ])
             ]
 };
