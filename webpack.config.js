@@ -59,7 +59,8 @@ module.exports = {
              new CleanWebpackPlugin(['dist']),
              new webpack.HotModuleReplacementPlugin(),
              new CopyWebpackPlugin([
-                {from:'./public',to:'./'} 
+                {from:'./src/assets',to:'./assets'},
+                {from:'./src/index.html',to:'./'} 
             ])
             ]
 };
