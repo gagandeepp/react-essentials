@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import './App.css';
-import Login from '../login/login';
+import '../app/App.css';
+import Login from '../app/features/login/login';
 
 class App extends Component {
   render() {
